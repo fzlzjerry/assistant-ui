@@ -1,5 +1,18 @@
 # @assistant-ui/react
 
+## 0.15.14
+
+### Patch Changes
+
+- [#5760](https://github.com/assistant-ui/assistant-ui/pull/5760) [`a4ac7dd`](https://github.com/assistant-ui/assistant-ui/commit/a4ac7dd94e9992070310acddff5e29f4e0693340) - fix: release replay response readers after completion, cancellation, and errors ([@Kinfe123](https://github.com/Kinfe123))
+
+- [#5764](https://github.com/assistant-ui/assistant-ui/pull/5764) [`47b9256`](https://github.com/assistant-ui/assistant-ui/commit/47b9256d417acda832cf93cd76f2c2714dd8ed6a) - fix: generate unique in-memory thread IDs ([@Kinfe123](https://github.com/Kinfe123))
+
+- [#5757](https://github.com/assistant-ui/assistant-ui/pull/5757) [`092585b`](https://github.com/assistant-ui/assistant-ui/commit/092585b6859eeca4d2947cbe858019f5a9d9e101) - fix: derive the suggestions scope from the thread so runtime-provided suggestions render through `ThreadPrimitive.Suggestions` ([#5529](https://github.com/assistant-ui/assistant-ui/issues/5529)) ([@okisdev](https://github.com/okisdev))
+
+- Updated dependencies [[`092585b`](https://github.com/assistant-ui/assistant-ui/commit/092585b6859eeca4d2947cbe858019f5a9d9e101)]:
+  - @assistant-ui/core@0.3.13
+
 ## 0.15.13
 
 ### Patch Changes

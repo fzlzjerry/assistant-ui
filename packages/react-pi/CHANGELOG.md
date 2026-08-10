@@ -1,5 +1,14 @@
 # @assistant-ui/react-pi
 
+## 0.0.17
+
+### Patch Changes
+
+- [#5761](https://github.com/assistant-ui/assistant-ui/pull/5761) [`9dbadf1`](https://github.com/assistant-ui/assistant-ui/commit/9dbadf16113de69e5de11fdf38761a9ff1164dfa) - fix: release event stream readers after completion, cancellation, and errors ([@Kinfe123](https://github.com/Kinfe123))
+
+- Updated dependencies [[`092585b`](https://github.com/assistant-ui/assistant-ui/commit/092585b6859eeca4d2947cbe858019f5a9d9e101)]:
+  - @assistant-ui/core@0.3.13
+
 ## 0.0.16
 
 ### Patch Changes

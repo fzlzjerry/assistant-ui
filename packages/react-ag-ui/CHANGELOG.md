@@ -1,5 +1,16 @@
 # @assistant-ui/react-ag-ui
 
+## 0.0.54
+
+### Patch Changes
+
+- [#5755](https://github.com/assistant-ui/assistant-ui/pull/5755) [`b9d5ba3`](https://github.com/assistant-ui/assistant-ui/commit/b9d5ba358f130ef548f295ab35465ad7b61847a0) - fix: preserve encrypted-only reasoning records across the AG-UI round trip. Under zero data retention an agent sends a `ReasoningMessage` whose readable `content` is empty and whose payload is entirely in `encryptedValue`, and both the adapter and the core normalizer dropped it: the import guarded on empty text, and a reasoning part with neither text nor summary is removed by `fromThreadMessageLike`. Such a record now rides on `metadata.custom.agui.opaqueReasoning` of the neighbouring message instead of becoming an unrenderable part, and is replayed into the run input adjacent to that message. A record that sat between an assistant message and its own tool result is replayed after that result, since import folds the result into the assistant message and that boundary no longer exists at export. A runtime configured with `showThinking: false` is affected too: it previously emitted no `reasoning` records at all, and now emits `{ role: "reasoning", content: "", encryptedValue }` for each imported record that carried a value, since that option hides reasoning from the UI rather than discarding state the agent needs back. ([@okisdev](https://github.com/okisdev))
+
+- [#5752](https://github.com/assistant-ui/assistant-ui/pull/5752) [`ee4db08`](https://github.com/assistant-ui/assistant-ui/commit/ee4db0894b636c6754dcc6fdd7edbca6d9942996) - fix: keep reasoning, and its signature, across the AG-UI round trip. `toAgUiMessages` built the run input from `extractText`, which reads text parts only, so an imported reasoning-only assistant message was discarded as a blank turn and a live assistant message silently lost its reasoning; reloading a thread and sending one more message deleted the reasoning history from what the agent received. Reasoning parts now leave as the standalone `reasoning` records they arrived as. The runtime also consumes `REASONING_ENCRYPTED_VALUE` and stores the blob at `providerMetadata.agui.encryptedValue`, so reasoning from a live run and from an imported `ReasoningMessage` are both re-emitted with their signature intact rather than replayed unsigned. ([@okisdev](https://github.com/okisdev))
+
+- Updated dependencies [[`092585b`](https://github.com/assistant-ui/assistant-ui/commit/092585b6859eeca4d2947cbe858019f5a9d9e101)]:
+  - @assistant-ui/core@0.3.13
+
 ## 0.0.53
 
 ### Patch Changes
